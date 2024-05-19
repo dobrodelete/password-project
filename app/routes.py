@@ -58,6 +58,7 @@ def account():
 
 
 @main.route('/', methods=['GET', 'POST'])
+@login_required
 def home():
     form = PasswordGenerationForm()
     generated_password = None
