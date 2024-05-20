@@ -15,8 +15,8 @@ class Password(db.Model):
 
     def encrypt_password(self, password, key):
         f = Fernet(key)
-        self.encrypted_password = f.encrypt(password.encode()).decode()
+        self.password = f.encrypt(password.encode()).decode()
 
     def decrypt_password(self, key):
         f = Fernet(key)
-        return f.decrypt(self.encrypted_password.encode()).decode()
+        return f.decrypt(self.password.encode()).decode()
