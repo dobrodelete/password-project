@@ -7,7 +7,7 @@ git clone https://github.com/dobrodelete/password
 
 После клонирования репозитория переходим в папку с проектом:
 ```bash
-cd password
+cd password-project
 ```
 
 Создаём виртуальное окружение (Bash, PowerShell, CMD):
