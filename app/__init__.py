@@ -9,11 +9,19 @@ from app.config import config
 from app.models import db, User
 
 
-def create_app():
+def create_app(test_config=None):
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = config.SECRET_KEY
-    app.config['SQLALCHEMY_DATABASE_URI'] = config.SQLALCHEMY_DATABASE_URI
-    app.config['FERNET_KEY'] = config.FERNET_KEY
+    app.config.from_mapping(
+        SECRET_KEY=config.SECRET_KEY,
+        SQLALCHEMY_DATABASE_URI=config.SQLALCHEMY_DATABASE_URI,
+        FERNET_KEY=config.FERNET_KEY,
+        WTF_CSRF_ENABLED=True,
+        APPLICATION_ROOT="/",
+        PREFERRED_URL_SCHEME="http"
+    )
+
+    if test_config:
+        app.config.update(test_config)
 
     db.init_app(app)
     bcrypt = Bcrypt(app)
