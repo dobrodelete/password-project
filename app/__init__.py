@@ -20,7 +20,6 @@ def create_app():
     login_manager = LoginManager(app)
     migrate = Migrate(app, db)
     talisman = Talisman(app)
-    # limiter = Limiter(app, key_func=lambda: current_user.id if current_user.is_authenticated else request.remote_addr)
 
     @login_manager.user_loader
     def load_user(user_id):
