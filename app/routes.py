@@ -102,7 +102,7 @@ def home():
     return render_template('home.html', form=form, generated_password=generated_password)
 
 
-@main.route('/passwords')
+@main.route('/passwords/')
 @login_required
 def passwords():
     user_passwords = Password.query.filter_by(user_id=current_user.id).all()
